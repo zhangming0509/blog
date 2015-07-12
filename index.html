@@ -89,7 +89,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>然后就是编辑config的delpoy部分</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## <span class="string">Docs:</span> <span class="string">http:</span><span class="comment">//hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="string">deploy:</span></span><br><span class="line"><span class="label">  type:</span> git</span><br><span class="line"><span class="label">  repo:</span> git<span class="annotation">@github</span>.<span class="string">com:</span>zhangming0509/zhangming0509.github.io.git</span><br></pre></td></tr></table></figure>
-<p>repo的名字是你的github用户名加<code>.github.io</code><br>编辑config时要注意yml的语法,冒号后要有空格</p>
+<ul>
+<li>repo的名字是你的github用户名加<code>.github.io</code>,每个用户只能创建一个<a href="https://pages.github.com/" target="_blank" rel="external">github page</a></li>
+<li>编辑config时要注意yml的语法,冒号后要有空格</li>
+</ul>
+<p>配置完成后执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure>
+<p>提示<code>INFO  Deploy done: git</code>,现在访问<code>http://你的github用户名.github.io/</code>就可以看到新的文章了.</p>
 
       
     </div>
