@@ -34,3 +34,23 @@ $ hexo d -g
 ```
 
 提示`INFO  Deploy done: git`,现在访问`http://你的github用户名.github.io/`就可以看到新的文章了.
+
+另外,也可使用`blog.git`的分支`gh-pages`去部署页面,相应的config修改为:
+
+```
+# Deployment
+## Docs: http://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: git@github.com:zhangming0509/blog.git
+  branch: gh-pages
+```
+
+`blog.git`就是你`hexo init blog`生成的项目对应的github仓库, gh-pages的开启需要在setting里边设置.
+`gh-pages`会使用`http://你的github用户名.github.io/blog/`作为页面的地址. 现在使用`hexo d -g`会将`public`目录上传只`blog.git`项目的`gh-pages`分支. blog项目保存了markdown文件,将更新后的文件提交到blog.git
+
+```bash
+$ git cimmit -m "commit info"
+```
+
+推荐使用第二种方法,可以省下一个远端的repo.
