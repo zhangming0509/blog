@@ -1,6 +1,6 @@
-title: hexo-deploy-tip
+title: Hexo部署相关
 date: 2015-07-12 11:12:13
-tags:
+tags: hexo
 ---
 记录一下hexo部署时遇到的问题, 执行了
 
@@ -26,6 +26,8 @@ deploy:
 
 * repo的名字是你的github用户名加`.github.io`,每个用户只能创建一个[github page](https://pages.github.com/)
 * 编辑config时要注意yml的语法,冒号后要有空格
+
+<!--more-->
 
 配置完成后执行
 
@@ -54,3 +56,25 @@ $ git cimmit -m "commit info"
 ```
 
 推荐使用第二种方法,可以省下一个远端的repo.
+
+tag使用
+------------
+
+hexo文章的头部文件是用YAML来写的，比如文章要同时标记多个tags，就需要用
+
+```
+tags: [tag1, tag2]
+```
+
+或者
+
+```
+tags:
+  - tag1
+  - tag2
+```
+
+发布显示更多
+---------------
+
+在你觉得适合的位置插入`<!--more-->`就会将之前的部分生成摘要。点击”阅读全文“才会看到全文。

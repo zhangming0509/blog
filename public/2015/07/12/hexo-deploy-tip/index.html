@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hexo-deploy-tip | ming blog</title>
+  <title>Hexo部署相关 | ming blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="记录一下hexo部署时遇到的问题, 执行了
 1$ hexo deploy
 报错hexo Deployer not found, 这是因为hexo 3.0后需要单独安装delpoyer package,如果要部署在github则需要安装hexo-deployer-git, 其它部署方式所需要相应的deployer请参看hexo deployment
 1$ npm install hexo-deplo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo-deploy-tip">
+<meta property="og:title" content="Hexo部署相关">
 <meta property="og:url" content="http://zhangming0509.github.io/2015/07/12/hexo-deploy-tip/index.html">
 <meta property="og:site_name" content="ming blog">
 <meta property="og:description" content="记录一下hexo部署时遇到的问题, 执行了
 1$ hexo deploy
 报错hexo Deployer not found, 这是因为hexo 3.0后需要单独安装delpoyer package,如果要部署在github则需要安装hexo-deployer-git, 其它部署方式所需要相应的deployer请参看hexo deployment
 1$ npm install hexo-deplo">
-<meta property="og:updated_time" content="2015-07-12T05:00:02.300Z">
+<meta property="og:updated_time" content="2015-12-02T05:13:43.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo-deploy-tip">
+<meta name="twitter:title" content="Hexo部署相关">
 <meta name="twitter:description" content="记录一下hexo部署时遇到的问题, 执行了
 1$ hexo deploy
 报错hexo Deployer not found, 这是因为hexo 3.0后需要单独安装delpoyer package,如果要部署在github则需要安装hexo-deployer-git, 其它部署方式所需要相应的deployer请参看hexo deployment
@@ -83,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hexo-deploy-tip
+      Hexo部署相关
     </h1>
   
 
@@ -96,37 +96,49 @@
 <p>报错<code>hexo Deployer not found</code>, 这是因为hexo 3.0后需要单独安装<code>delpoyer package</code>,如果要部署在github则需要安装<code>hexo-deployer-git</code>, 其它部署方式所需要相应的deployer请参看<a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">hexo deployment</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>然后就是编辑config的delpoy部分</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## <span class="string">Docs:</span> <span class="string">http:</span><span class="comment">//hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="string">deploy:</span></span><br><span class="line"><span class="label">  type:</span> git</span><br><span class="line"><span class="label">  repo:</span> git<span class="annotation">@github</span>.<span class="string">com:</span>zhangming0509/zhangming0509.github.io.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Deployment</span></span><br><span class="line"><span class="preprocessor">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="title">deploy</span>:</span><br><span class="line">  <span class="typedef"><span class="keyword">type</span>: git</span></span><br><span class="line">  repo: git@github.com:zhangming0509/zhangming0509.github.io.git</span><br></pre></td></tr></table></figure>
 <ul>
 <li>repo的名字是你的github用户名加<code>.github.io</code>,每个用户只能创建一个<a href="https://pages.github.com/" target="_blank" rel="external">github page</a></li>
 <li>编辑config时要注意yml的语法,冒号后要有空格</li>
 </ul>
+<a id="more"></a>
 <p>配置完成后执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure>
 <p>提示<code>INFO  Deploy done: git</code>,现在访问<code>http://你的github用户名.github.io/</code>就可以看到新的文章了.</p>
 <p>另外,也可使用<code>blog.git</code>的分支<code>gh-pages</code>去部署页面,相应的config修改为:</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## <span class="string">Docs:</span> <span class="string">http:</span><span class="comment">//hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="string">deploy:</span></span><br><span class="line"><span class="label">  type:</span> git</span><br><span class="line"><span class="label">  repo:</span> git<span class="annotation">@github</span>.<span class="string">com:</span>zhangming0509/blog.git</span><br><span class="line"><span class="label">  branch:</span> gh-pages</span><br></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Deployment</span></span><br><span class="line"><span class="preprocessor">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="title">deploy</span>:</span><br><span class="line">  <span class="typedef"><span class="keyword">type</span>: git</span></span><br><span class="line">  repo: git@github.com:zhangming0509/blog.git</span><br><span class="line">  branch: gh-pages</span><br></pre></td></tr></table></figure>
 <p><code>blog.git</code>就是你<code>hexo init blog</code>生成的项目对应的github仓库, gh-pages的开启需要在setting里边设置.<br><code>gh-pages</code>会使用<code>http://你的github用户名.github.io/blog/</code>作为页面的地址. 现在使用<code>hexo d -g</code>会将<code>public</code>目录上传只<code>blog.git</code>项目的<code>gh-pages</code>分支. blog项目保存了markdown文件,将更新后的文件提交到blog.git</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git cimmit -m <span class="string">"commit info"</span></span><br></pre></td></tr></table></figure>
 <p>推荐使用第二种方法,可以省下一个远端的repo.</p>
+<h2 id="tag使用">tag使用</h2><p>hexo文章的头部文件是用YAML来写的，比如文章要同时标记多个tags，就需要用</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tags: [ta<span class="keyword">g1</span>, ta<span class="keyword">g2</span>]</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line">  -<span class="ruby"> tag1</span><br><span class="line"></span>  -<span class="ruby"> tag2</span></span><br></pre></td></tr></table></figure>
+<h2 id="发布显示更多">发布显示更多</h2><p>在你觉得适合的位置插入<code>&lt;!--more--&gt;</code>就会将之前的部分生成摘要。点击”阅读全文“才会看到全文。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/07/12/hexo-deploy-tip/" data-id="cibzx5wds0001ndhya3u3upoe" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2015/07/12/hexo-deploy-tip/" data-id="cihoc03px0002omk6odx4oi6l" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-  
-    <a href="/2015/06/29/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2015/12/02/sublime-shortcuts/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          sublime快捷键
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -140,14 +152,28 @@
     
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -159,11 +185,11 @@
       <ul>
         
           <li>
-            <a href="/2015/07/12/hexo-deploy-tip/">hexo-deploy-tip</a>
+            <a href="/2015/12/02/sublime-shortcuts/">sublime快捷键</a>
           </li>
         
           <li>
-            <a href="/2015/06/29/hello-world/">Hello World</a>
+            <a href="/2015/07/12/hexo-deploy-tip/">Hexo部署相关</a>
           </li>
         
       </ul>
