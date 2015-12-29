@@ -3,17 +3,32 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ming blog</title>
+  <title>ubuntu下使用fiddler对Android应用进行抓包 | ming blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ming blog">
-<meta property="og:url" content="http://zhangming0509.github.io/index.html">
+  <meta name="description" content="安装之前在ubuntu下尝试了使用wine安装fiddler，装完后打不开，后来发现还有种方法就是mono。首先安装mono:
+1$ sudo apt-get install mono-complete
+然后下载fiddler for mono,选择Current Linux build就行了，下载完成后解压，cd到解压目录执行：
+1$ mono Fiddler.exe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu下使用fiddler对Android应用进行抓包">
+<meta property="og:url" content="http://zhangming0509.github.io/2015/12/29/ubuntu-mono-fiddler/index.html">
 <meta property="og:site_name" content="ming blog">
-<meta property="og:description">
+<meta property="og:description" content="安装之前在ubuntu下尝试了使用wine安装fiddler，装完后打不开，后来发现还有种方法就是mono。首先安装mono:
+1$ sudo apt-get install mono-complete
+然后下载fiddler for mono,选择Current Linux build就行了，下载完成后解压，cd到解压目录执行：
+1$ mono Fiddler.exe">
+<meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/15-12-29/44673911.jpg?imageView/2/w/720/q/90">
+<meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/15-12-29/43193016.jpg?imageView/2/w/720/q/90">
+<meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/15-12-29/95993753.jpg?imageView/2/w/480/q/90">
+<meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/15-12-29/51468114.jpg?imageView/2/w/320/q/90">
+<meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/15-12-29/56537623.jpg?imageView/2/w/720/q/90">
+<meta property="og:updated_time" content="2015-12-29T03:22:42.960Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ming blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="ubuntu下使用fiddler对Android应用进行抓包">
+<meta name="twitter:description" content="安装之前在ubuntu下尝试了使用wine安装fiddler，装完后打不开，后来发现还有种方法就是mono。首先安装mono:
+1$ sudo apt-get install mono-complete
+然后下载fiddler for mono,选择Current Linux build就行了，下载完成后解压，cd到解压目录执行：
+1$ mono Fiddler.exe">
   
     <link rel="alternative" href="/atom.xml" title="ming blog" type="application/atom+xml">
   
@@ -59,9 +74,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-ubuntu-mono-fiddler" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ubuntu-mono-fiddler" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/29/ubuntu-mono-fiddler/" class="article-date">
   <time datetime="2015-12-29T01:50:47.000Z" itemprop="datePublished">2015-12-29</time>
@@ -74,8 +87,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/29/ubuntu-mono-fiddler/">ubuntu下使用fiddler对Android应用进行抓包</a>
+    <h1 class="article-title" itemprop="name">
+      ubuntu下使用fiddler对Android应用进行抓包
     </h1>
   
 
@@ -85,13 +98,17 @@
       
         <h2 id="安装">安装</h2><p>之前在ubuntu下尝试了使用wine安装fiddler，装完后打不开，后来发现还有种方法就是mono。<br>首先安装mono:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install mono-complete</span><br></pre></td></tr></table></figure>
-<p>然后下载<a href="http://fiddler.wikidot.com/mono">fiddler for mono</a>,选择<code>Current Linux build</code>就行了，下载完成后解压，cd到解压目录执行：</p>
+<p>然后下载<a href="http://fiddler.wikidot.com/mono" target="_blank" rel="external">fiddler for mono</a>,选择<code>Current Linux build</code>就行了，下载完成后解压，cd到解压目录执行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mono Fiddler.exe</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2015/12/29/ubuntu-mono-fiddler/#more">Read More</a>
-          </p>
-        
+<a id="more"></a>
+<p><img src="http://7xkbsf.com1.z0.glb.clouddn.com/15-12-29/44673911.jpg?imageView/2/w/720/q/90" alt=""></p>
+<h2 id="设置">设置</h2><p>连接设置，Tools-&gt;Fiddler Options-&gt;connection,勾选allow remote computer to connect<br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/15-12-29/43193016.jpg?imageView/2/w/720/q/90" alt=""></p>
+<p>查看本机ip<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ifconfig</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xkbsf.com1.z0.glb.clouddn.com/15-12-29/95993753.jpg?imageView/2/w/480/q/90" alt=""><br>打开android设备的“设置”-&gt;“WLAN”,打开代理服务器，设置地址为上边获取的ip（192.168.1.66）,<br>端口为connection中设置的8888<br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/15-12-29/51468114.jpg?imageView/2/w/320/q/90" alt=""></p>
+<p>配置Fiddler允许监听https</p>
+<p>默认下，Fiddler不会捕获HTTPS会话，需要设置, 打开Fiddler Tool-&gt;Fiddler Options-&gt;HTTPS页签。<br>选中decrypt https traffic和ignore server certificate errors两项<br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/15-12-29/56537623.jpg?imageView/2/w/720/q/90" alt=""></p>
+<p>参考链接：<br><a href="http://www.cnblogs.com/jcli/p/4474332.html" target="_blank" rel="external">Linux(Ubuntu)环境下使用Fiddler</a><br><a href="http://www.linuxidc.com/Linux/2014-02/97024.htm" target="_blank" rel="external">利用Fiddler对Android https请求进行监测</a></p>
+
       
     </div>
     <footer class="article-footer">
@@ -103,122 +120,20 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-sublime-shortcuts" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/02/sublime-shortcuts/" class="article-date">
-  <time datetime="2015-12-02T04:08:00.000Z" itemprop="datePublished">2015-12-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/02/sublime-shortcuts/">sublime快捷键</a>
-    </h1>
+    <a href="/2015/12/02/sublime-shortcuts/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">sublime快捷键</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用sublime也有一年多了,今天总结下比较常用的快捷键.</p>
-<h2 id="跳转类">跳转类</h2><ul>
-<li>Ctrl+P: 搜索项目中的文件<ul>
-<li>输入’#’: 在当前文件匹配结果</li>
-<li>输入’@’: 同Ctrl+R</li>
-<li>输入’:’: 同Ctrl+G</li>
-</ul>
-</li>
-<li>Ctrl+R: 搜索函数名或类名</li>
-<li>Ctrl+G: 跳转到指定行<br>F12: 跳转到定义处</li>
-</ul>
-<h2 id="文件窗口切换">文件窗口切换</h2><ul>
-<li>Ctrl+Tab: 在当前窗口和前一个窗口之间切换</li>
-<li>Ctrl+PgDown: 切换到右侧标签</li>
-<li>Ctrl+PgUp: 切换到左侧标签</li>
-<li>Alt+数字: 切换到指定序号的标签(从左往右从1开始递增)</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2015/12/02/sublime-shortcuts/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/12/02/sublime-shortcuts/" data-id="ciiqtxfeh0008ikk6x642kxp9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sublime/">sublime</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
-
-  
-    <article id="post-hexo-deploy-tip" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/12/hexo-deploy-tip/" class="article-date">
-  <time datetime="2015-07-12T03:12:13.000Z" itemprop="datePublished">2015-07-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/12/hexo-deploy-tip/">Hexo部署相关</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录一下hexo部署时遇到的问题, 执行了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>报错<code>hexo Deployer not found</code>, 这是因为hexo 3.0后需要单独安装<code>delpoyer package</code>,如果要部署在github则需要安装<code>hexo-deployer-git</code>, 其它部署方式所需要相应的deployer请参看<a href="https://hexo.io/docs/deployment.html">hexo deployment</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>然后就是编辑config的delpoy部分</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Deployment</span></span><br><span class="line"><span class="preprocessor">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="title">deploy</span>:</span><br><span class="line">  <span class="typedef"><span class="keyword">type</span>: git</span></span><br><span class="line">  repo: git@github.com:zhangming0509/zhangming0509.github.io.git</span><br></pre></td></tr></table></figure>
-<ul>
-<li>repo的名字是你的github用户名加<code>.github.io</code>,每个用户只能创建一个<a href="https://pages.github.com/">github page</a></li>
-<li>编辑config时要注意yml的语法,冒号后要有空格</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2015/07/12/hexo-deploy-tip/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/07/12/hexo-deploy-tip/" data-id="ciiqtxfdo0000ikk6ymlsy73n" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-  
 </section>
         
           <aside id="sidebar">
