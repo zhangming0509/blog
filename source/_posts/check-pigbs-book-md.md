@@ -304,7 +304,7 @@ def send_message():
 if __name__ == "__main__":
     checker = BusBookChecker(
         '150716105019140882', '150716105018892878')
-    print checker.check()
+    print u'当前预售期到' + checker.check()
 ```
 
 修改check_bus.py的权限，增加可执行权限：
