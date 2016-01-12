@@ -1,8 +1,7 @@
-title: SQL和sqlalchemy实现点赞和评论数量对内容排名的影响
+title: SQL和sqlalchemy实现根据点赞和评论数量排序
 date: 2016-01-11 13:49:13
 tags:
   - SQL
-  - MySql
   - sqlalchemy
 ---
 
