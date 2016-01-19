@@ -8,7 +8,7 @@ tags:
 数据获取
 --------
 
-本片将记录如何使用python查询小猪巴士是否有新票放出，在[ubuntu下使用fiddler对Android应用进行抓包 ](http://zhangming0509.github.io/2015/12/29/ubuntu-mono-fiddler/)
+本篇将记录如何使用python查询小猪巴士是否有新票放出，在[ubuntu下使用fiddler对Android应用进行抓包 ](http://zhangming0509.github.io/2015/12/29/ubuntu-mono-fiddler/)
 已经记录了如何真机抓包，线路查询接口如下图所示：
 ![](http://7xkbsf.com1.z0.glb.clouddn.com/15-12-31/31957377.jpg?imageView/2/w/720/q/90)
 使用curl尝试发送请求：

@@ -89,23 +89,31 @@ class DatingShowLike(db.Model):
 sql版本如下：
 
 ```sql
-select * from (
-	select d.id, sub_comment.comment_count as sub_c_count, sub_like.like_count as sub_like_count,
-  (sub_comment.comment_count * 2 + sub_like.like_count) as total_count
-  -- (ifnull(sub_comment.comment_count, 0) * 2 + ifnull(sub_like.like_count, 0)) as total_count
-	from dating_show as d left join (
-		select count(*) as comment_count, dc.datingshow_id as dcid from dating_show_comment as dc
-		group by dc.datingshow_id order by comment_count
-	) as sub_comment
-	on sub_comment.dcid=d.id
-	left join (
-		select count(*) as like_count, di.datingshow_id as diid from dating_show_like as di
-		group by di.datingshow_id order by like_count
-	) as sub_like
-	on sub_like.diid=d.id
-	-- where d.created between date_sub(curdate(), interval 1 day) and curdate()
-	order by sub_comment.comment_count desc
-) as sub order by sub.total_count desc;
+select
+    *
+from
+    (select
+        d.id,
+            sub_comment.comment_count as sub_c_count,
+            sub_like.like_count as sub_like_count,
+            (sub_comment.comment_count * 2 + sub_like.like_count) as total_count
+    from
+        dating_show as d
+    left join (select
+        count(*) as comment_count, dc.datingshow_id as dcid
+    from
+        dating_show_comment as dc
+    group by dc.datingshow_id
+    order by comment_count) as sub_comment ON sub_comment.dcid = d.id
+    left join (select
+        count(*) as like_count, di.datingshow_id as diid
+    from
+        dating_show_like as di
+    group by di.datingshow_id
+    order by like_count) as sub_like ON sub_like.diid = d.id
+    -- where d.created between date_sub(curdate(), interval 1 day) and curdate()
+    order by sub_comment.comment_count desc) as sub
+order by sub.total_count desc;
 ```
 
 
@@ -147,9 +155,19 @@ sub_like = s.query(DatingShowLike.datingshow_id, func.count('*').label('like_cou
 
 sub_comment = s.query(DatingShowComment.datingshow_id, func.count('*').label('comment_count')).group_by(DatingShowComment.datingshow_id).subquery()
 
-sub = s.query(DatingShow.id, DatingShow.created, case([(sub_comment.c.comment_count == None, 0)], else_=sub_comment.c.comment_count).label('comment_count'), case([(sub_like.c.like_count == None, 0)], else_=sub_like.c.like_count).label('like_count')).outerjoin(sub_comment, DatingShow.id==sub_comment.c.datingshow_id).outerjoin(sub_like, DatingShow.id==sub_like.c.datingshow_id).subquery()
+sub = s.query(
+  DatingShow.id, DatingShow.created,
+  case(
+    [(sub_comment.c.comment_count == None, 0)],
+    else_=sub_comment.c.comment_count).label('comment_count'),
+  case(
+    [(sub_like.c.like_count == None, 0)],
+    else_=sub_like.c.like_count).label('like_count')).outerjoin(sub_comment,
+  DatingShow.id==sub_comment.c.datingshow_id).outerjoin(
+  sub_like, DatingShow.id==sub_like.c.datingshow_id).subquery()
 
-end_subquery = s.query(sub.c.id, sub.c.created, sub.c.like_count, sub.c.comment_count, (2*sub.c.comment_count+sub.c.like_count).label('total_count')).subquery()
+end_subquery = s.query(
+  sub.c.id, sub.c.created, sub.c.like_count, sub.c.comment_count, (2*sub.c.comment_count+sub.c.like_count).label('total_count')).subquery()
 
 for res in s.query(end_subquery).order_by(end_subquery.c.total_count.desc(), end_subquery.c.id.desc()):
     print res.id, res.created.date(), res.comment_count, res.like_count, res.total_count

@@ -3,17 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ming blog</title>
+  <title>使用PIL生成缩略图 | ming blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ming blog">
-<meta property="og:url" content="http://zhangming0509.github.io/index.html">
+  <meta name="description" content="两种生成缩略图方法的区别使用PIL生成缩略图用两种方式，resize和thumbnail,区别在于使用reszie会返回一个新对象，而使用thumbnail则会在原对象上进行修改，即thumbnail会覆盖原图。
+123456789101112131415&amp;gt;&amp;gt;&amp;gt; from PIL import Image&amp;gt;&amp;gt;&amp;gt; im = Image.open(&apos;a.jpg&apos;)&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用PIL生成缩略图">
+<meta property="og:url" content="http://zhangming0509.github.io/2016/01/19/pil-thumbnail/index.html">
 <meta property="og:site_name" content="ming blog">
-<meta property="og:description">
+<meta property="og:description" content="两种生成缩略图方法的区别使用PIL生成缩略图用两种方式，resize和thumbnail,区别在于使用reszie会返回一个新对象，而使用thumbnail则会在原对象上进行修改，即thumbnail会覆盖原图。
+123456789101112131415&amp;gt;&amp;gt;&amp;gt; from PIL import Image&amp;gt;&amp;gt;&amp;gt; im = Image.open(&apos;a.jpg&apos;)&amp;">
+<meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-19/43179932.jpg?imageView/2/w/400/q/90">
+<meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-19/91777846.jpg?imageView/2/w/400/q/90">
+<meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-19/36949893.jpg?imageView/2/w/400/q/90">
+<meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-19/27325129.jpg?imageView/2/w/400/q/90">
+<meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-19/35458890.jpg?imageView/2/w/400/q/90">
+<meta property="og:updated_time" content="2016-01-19T08:49:23.718Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ming blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="使用PIL生成缩略图">
+<meta name="twitter:description" content="两种生成缩略图方法的区别使用PIL生成缩略图用两种方式，resize和thumbnail,区别在于使用reszie会返回一个新对象，而使用thumbnail则会在原对象上进行修改，即thumbnail会覆盖原图。
+123456789101112131415&amp;gt;&amp;gt;&amp;gt; from PIL import Image&amp;gt;&amp;gt;&amp;gt; im = Image.open(&apos;a.jpg&apos;)&amp;">
   
     <link rel="alternative" href="/atom.xml" title="ming blog" type="application/atom+xml">
   
@@ -59,9 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-pil-thumbnail" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-pil-thumbnail" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/19/pil-thumbnail/" class="article-date">
   <time datetime="2016-01-19T06:45:27.000Z" itemprop="datePublished">2016-01-19</time>
@@ -74,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/19/pil-thumbnail/">使用PIL生成缩略图</a>
+    <h1 class="article-title" itemprop="name">
+      使用PIL生成缩略图
     </h1>
   
 
@@ -110,255 +117,20 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-rank-query" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/11/rank-query/" class="article-date">
-  <time datetime="2016-01-11T05:49:13.000Z" itemprop="datePublished">2016-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/11/rank-query/">SQL和sqlalchemy实现根据点赞和评论数量排序</a>
-    </h1>
+    <a href="/2016/01/11/rank-query/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SQL和sqlalchemy实现根据点赞和评论数量排序</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="表结构">表结构</h2><p>表结构如下所示， 用户可以点赞和评论，最后需要综合点赞和评论数量对结果降序排列：<br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-11/18995526.jpg?imageView/2/w/720/q/90" alt=""></p>
-        
-          <p class="article-more-link">
-            <a href="/2016/01/11/rank-query/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2016/01/11/rank-query/" data-id="cijl2kso9000d5ok6fphi1i1a" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlalchemy/">sqlalchemy</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
-
-  
-    <article id="post-check-pigbs-book-md" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/31/check-pigbs-book-md/" class="article-date">
-  <time datetime="2015-12-31T01:54:02.000Z" itemprop="datePublished">2015-12-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/31/check-pigbs-book-md/">python监控小猪巴士票预售</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="数据获取">数据获取</h2><p>本篇将记录如何使用python查询小猪巴士是否有新票放出，在<a href="http://zhangming0509.github.io/2015/12/29/ubuntu-mono-fiddler/">ubuntu下使用fiddler对Android应用进行抓包 </a><br>已经记录了如何真机抓包，线路查询接口如下图所示：<br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/15-12-31/31957377.jpg?imageView/2/w/720/q/90" alt=""><br>使用curl尝试发送请求：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST <span class="operator">-d</span> <span class="string">"lineId=150716105019140882&amp;lineBaseId=150716105018892878"</span> http://bsapp.pig84.com/customline_app/app_book/getLineAndClassInfo.action</span><br></pre></td></tr></table></figure></p>
-<p>响应结果如下：<br>
-        
-          <p class="article-more-link">
-            <a href="/2015/12/31/check-pigbs-book-md/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/12/31/check-pigbs-book-md/" data-id="cijl2ksnl00005ok6l3uo3g5e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/crontab/">crontab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ubuntu-mono-fiddler" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/29/ubuntu-mono-fiddler/" class="article-date">
-  <time datetime="2015-12-29T01:50:47.000Z" itemprop="datePublished">2015-12-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/29/ubuntu-mono-fiddler/">ubuntu下使用fiddler对Android应用进行抓包</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装">安装</h2><p>之前在ubuntu下尝试了使用wine安装fiddler，装完后打不开，后来发现还有种方法就是mono。<br>首先安装mono:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install mono-complete</span><br></pre></td></tr></table></figure>
-<p>然后下载<a href="http://fiddler.wikidot.com/mono">fiddler for mono</a>,选择<code>Current Linux build</code>就行了，下载完成后解压，cd到解压目录执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mono Fiddler.exe</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2015/12/29/ubuntu-mono-fiddler/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/12/29/ubuntu-mono-fiddler/" data-id="cijl2kso300055ok6v0djxfhv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fiddler/">fiddler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mono/">mono</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-sublime-shortcuts" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/02/sublime-shortcuts/" class="article-date">
-  <time datetime="2015-12-02T04:08:00.000Z" itemprop="datePublished">2015-12-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/02/sublime-shortcuts/">sublime快捷键</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用sublime也有一年多了,今天总结下比较常用的快捷键.</p>
-<h2 id="跳转类">跳转类</h2><ul>
-<li>Ctrl+P: 搜索项目中的文件<ul>
-<li>输入’#’: 在当前文件匹配结果</li>
-<li>输入’@’: 同Ctrl+R</li>
-<li>输入’:’: 同Ctrl+G</li>
-</ul>
-</li>
-<li>Ctrl+R: 搜索函数名或类名</li>
-<li>Ctrl+G: 跳转到指定行<br>F12: 跳转到定义处</li>
-</ul>
-<h2 id="文件窗口切换">文件窗口切换</h2><ul>
-<li>Ctrl+Tab: 在当前窗口和前一个窗口之间切换</li>
-<li>Ctrl+PgDown: 切换到右侧标签</li>
-<li>Ctrl+PgUp: 切换到左侧标签</li>
-<li>Alt+数字: 切换到指定序号的标签(从左往右从1开始递增)</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2015/12/02/sublime-shortcuts/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/12/02/sublime-shortcuts/" data-id="cijl2kso7000a5ok65kt9rp49" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sublime/">sublime</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo-deploy-tip" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/12/hexo-deploy-tip/" class="article-date">
-  <time datetime="2015-07-12T03:12:13.000Z" itemprop="datePublished">2015-07-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/12/hexo-deploy-tip/">Hexo部署相关</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录一下hexo部署时遇到的问题, 执行了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>报错<code>hexo Deployer not found</code>, 这是因为hexo 3.0后需要单独安装<code>delpoyer package</code>,如果要部署在github则需要安装<code>hexo-deployer-git</code>, 其它部署方式所需要相应的deployer请参看<a href="https://hexo.io/docs/deployment.html">hexo deployment</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>然后就是编辑config的delpoy部分</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Deployment</span></span><br><span class="line"><span class="preprocessor">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="title">deploy</span>:</span><br><span class="line">  <span class="typedef"><span class="keyword">type</span>: git</span></span><br><span class="line">  repo: git@github.com:zhangming0509/zhangming0509.github.io.git</span><br></pre></td></tr></table></figure>
-<ul>
-<li>repo的名字是你的github用户名加<code>.github.io</code>,每个用户只能创建一个<a href="https://pages.github.com/">github page</a></li>
-<li>编辑config时要注意yml的语法,冒号后要有空格</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2015/07/12/hexo-deploy-tip/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/07/12/hexo-deploy-tip/" data-id="cijl2ksog000m5ok6s3o3jn6l" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-  
 </section>
         
           <aside id="sidebar">
