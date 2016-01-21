@@ -48,9 +48,14 @@ def get_accent_color(path):
   1. 当图片的`mode`不是`RGB`时需要将其转换成`RGB`。因为如果是png图片，其`mode`可能是`P`,`getpixel`返回的是一个整数而不是一个rgb的tuple，导致`rgb_to_hsv`不能使用。
   2. `rgb_to_hsv`的结果中`h`的取值范围是0-1，所以相应的色差值我们改为`0.3`。
   3. `putpixel((x, y), (r, g, b))`在图片的(x, y)坐标画一个颜色为`(r, g, b)`的点。
+  4. 如果要提高执行效率，可以生成缩略图后再处理。
 
 效果展示：
 ![](http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/86402189.jpg)
 ![](http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/5371713.jpg)
 ![](http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/49477423.jpg)
 从结果看前两张效果不错，后边的效果太差，所以说如果要更好的效果那可能就需要什么Machine Learning什么的高神技术。
+
+参考链接
+[获取图片的主色调](http://www.cnblogs.com/michaelhuwei/p/3701535.html)
+[python判断、获取一张图片主色调的2个实例](http://www.jb51.net/article/48875.htm)
