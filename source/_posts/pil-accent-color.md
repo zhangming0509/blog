@@ -54,7 +54,7 @@ def get_accent_color(path):
 ![](http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/86402189.jpg)
 ![](http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/5371713.jpg)
 ![](http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/49477423.jpg)
-从结果看前两张效果不错，后边的效果太差，所以说如果要更好的效果那可能就需要什么Machine Learning什么的高神技术。
+从结果看前两张效果不错，后边的效果太差，所以说如果要更好的效果那可能就需要什么Machine Learning什么的高深技术。
 
 参考链接
 [获取图片的主色调](http://www.cnblogs.com/michaelhuwei/p/3701535.html)

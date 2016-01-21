@@ -14,7 +14,7 @@
 <meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/86402189.jpg">
 <meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/5371713.jpg">
 <meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/49477423.jpg">
-<meta property="og:updated_time" content="2016-01-21T07:41:36.046Z">
+<meta property="og:updated_time" content="2016-01-21T07:43:22.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用PIL获取图片主色调">
 <meta name="twitter:description" content="最近看到Pocket casts这个APP中有些页面是取了上一层入口处点击的图片中的颜色作为背景，所以就在想这个是怎么实现的，在网上发现了一篇文章获取图片的主色调，是用c#实现的，我按原作者的思路用Python做了一个类似的版本，原作者的思路是：1234567891011我想了一个简单的办法，就是根据图片中每个像素的色调值去判断哪些像素符合“醒目”这个特性。分三步进行1.计算整个图片的色调的平均值">
@@ -94,7 +94,7 @@
 <li><code>putpixel((x, y), (r, g, b))</code>在图片的(x, y)坐标画一个颜色为<code>(r, g, b)</code>的点。</li>
 <li>如果要提高执行效率，可以生成缩略图后再处理。</li>
 </ol>
-<p>效果展示：<br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/86402189.jpg" alt=""><br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/5371713.jpg" alt=""><br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/49477423.jpg" alt=""><br>从结果看前两张效果不错，后边的效果太差，所以说如果要更好的效果那可能就需要什么Machine Learning什么的高神技术。</p>
+<p>效果展示：<br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/86402189.jpg" alt=""><br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/5371713.jpg" alt=""><br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/49477423.jpg" alt=""><br>从结果看前两张效果不错，后边的效果太差，所以说如果要更好的效果那可能就需要什么Machine Learning什么的高深技术。</p>
 <p>参考链接<br><a href="http://www.cnblogs.com/michaelhuwei/p/3701535.html" target="_blank" rel="external">获取图片的主色调</a><br><a href="http://www.jb51.net/article/48875.htm" target="_blank" rel="external">python判断、获取一张图片主色调的2个实例</a></p>
 
       
