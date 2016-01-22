@@ -20,6 +20,7 @@ tags:
 3.计算整个“醒目像素列表”的颜色均值，得到的结果即为该图片的主色调。
 ```
 
+<!--more-->
 
 python版本代码如下：
 
@@ -35,20 +36,23 @@ def get_accent_color(path):
     delta_h = 0.3
     avg_h = sum(t[0] for t in[colorsys.rgb_to_hsv(*im.getpixel((x,y))) for x in range(im.size[0]) for y in range(im.size[1])])/(im.size[0]*im.size[1])
     beyond = filter(lambda x: abs(colorsys.rgb_to_hsv(*x)[0]- avg_h)>delta_h ,[im.getpixel((x,y)) for x in range(im.size[0]) for y in range(im.size[1])])
-    r = sum(e[0] for e in beyond)/len(beyond)
-    g = sum(e[1] for e in beyond)/len(beyond)
-    b = sum(e[2] for e in beyond)/len(beyond)
-    for i in range(im.size[0]/2):
-        for j in range(im.size[1]/10):
-            im.putpixel((i,j), (r,g,b))
-    im.save('res'+path)
-    return r, g, b
+    if len(beyond):
+        r = sum(e[0] for e in beyond)/len(beyond)
+        g = sum(e[1] for e in beyond)/len(beyond)
+        b = sum(e[2] for e in beyond)/len(beyond)
+        for i in range(im.size[0]/2):
+            for j in range(im.size[1]/10):
+                im.putpixel((i,j), (r,g,b))
+        im.save('res'+path)
+        return r, g, b
+    return None
 ```
 
   1. 当图片的`mode`不是`RGB`时需要将其转换成`RGB`。因为如果是png图片，其`mode`可能是`P`,`getpixel`返回的是一个整数而不是一个rgb的tuple，导致`rgb_to_hsv`不能使用。
   2. `rgb_to_hsv`的结果中`h`的取值范围是0-1，所以相应的色差值我们改为`0.3`。
   3. `putpixel((x, y), (r, g, b))`在图片的(x, y)坐标画一个颜色为`(r, g, b)`的点。
   4. 如果要提高执行效率，可以生成缩略图后再处理。
+  5. 有些图片不存在色差超过0.3的点，则将其忽略，返回None
 
 效果展示：
 ![](http://7xkbsf.com1.z0.glb.clouddn.com/16-1-21/86402189.jpg)
