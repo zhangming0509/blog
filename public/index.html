@@ -61,6 +61,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-private-attribute-inherient" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/29/python-private-attribute-inherient/" class="article-date">
+  <time datetime="2016-01-29T05:26:47.000Z" itemprop="datePublished">2016-01-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/29/python-private-attribute-inherient/">python私有同名属性的继承</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在python中以双下划线开头的属性是私有属性，不会被子类继承，然而python中的私有不是绝对的私有，可以通过<code>_类名__私有属性</code>的方式被继承，现有如下两个类, <code>child</code>和<code>Father</code>：</p>
+<ul>
+<li>第一种情况：子类<code>Child</code>未调用父类的构造函数，但是没有定义<code>get</code>方法，只定义了一个<code>__value</code>私有属性</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__value = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Father get() method'</span></span><br><span class="line">        <span class="keyword">print</span> self.__value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Father)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__value = <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p>子类<code>Child</code>继承了父类<code>Father</code>的<code>get</code>方法，但是这个<code>get</code>方法打印的是父类<code>Father</code>中的私有属性<code>__value</code>，子类对象创建的过程没有调用父类的构造函数，并未继承到父类的私有属性<code>_Father__value</code>，所以子类对象调用时会抛出异常<code>AttributeError: &#39;Child&#39; object has no attribute &#39;_Father__value&#39;</code></p>
+        
+          <p class="article-more-link">
+            <a href="/2016/01/29/python-private-attribute-inherient/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhangming0509.github.io/2016/01/29/python-private-attribute-inherient/" data-id="cijzeyvx3000ic5k6tti6f15e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-pil-accent-color" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/21/pil-accent-color/" class="article-date">
@@ -92,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2016/01/21/pil-accent-color/" data-id="cijnvm2am000me0k6uhtnxwa9" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2016/01/21/pil-accent-color/" data-id="cijzeyvx8000nc5k6y45929ut" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/">PIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -136,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2016/01/19/pil-thumbnail/" data-id="cijnvm2aj000ie0k636y60ruu" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2016/01/19/pil-thumbnail/" data-id="cijzeyvx5000jc5k6i1jkknsl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/">PIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -179,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2016/01/11/rank-query/" data-id="cijnvm2ah000de0k6ldue0qna" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2016/01/11/rank-query/" data-id="cijzeyvx1000dc5k6s9jiwt4z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlalchemy/">sqlalchemy</a></li></ul>
@@ -223,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/12/31/check-pigbs-book-md/" data-id="cijnvm29s0000e0k6fqydb2g6" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2015/12/31/check-pigbs-book-md/" data-id="cijzeyvw80000c5k61ec9dkfz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/crontab/">crontab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -269,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/12/29/ubuntu-mono-fiddler/" data-id="cijnvm2aa0005e0k6l2nvp555" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2015/12/29/ubuntu-mono-fiddler/" data-id="cijzeyvwu0005c5k6hjavmivl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fiddler/">fiddler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mono/">mono</a></li></ul>
@@ -328,7 +376,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/12/02/sublime-shortcuts/" data-id="cijnvm2ae000ae0k64ild91t1" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2015/12/02/sublime-shortcuts/" data-id="cijzeyvwy000ac5k6drxygspb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sublime/">sublime</a></li></ul>
@@ -380,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/07/12/hexo-deploy-tip/" data-id="cijnvm2ao000ne0k6tay2lfmw" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2015/07/12/hexo-deploy-tip/" data-id="cijzeyvxb000qc5k6ag0f49h7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -403,7 +451,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PIL/">PIL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fiddler/">fiddler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mono/">mono</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlalchemy/">sqlalchemy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PIL/">PIL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fiddler/">fiddler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mono/">mono</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlalchemy/">sqlalchemy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -421,7 +469,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -431,6 +479,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/01/29/python-private-attribute-inherient/">python私有同名属性的继承</a>
+          </li>
         
           <li>
             <a href="/2016/01/21/pil-accent-color/">使用PIL获取图片主色调</a>
@@ -446,10 +498,6 @@
         
           <li>
             <a href="/2015/12/31/check-pigbs-book-md/">python监控小猪巴士票预售</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/29/ubuntu-mono-fiddler/">ubuntu下使用fiddler对Android应用进行抓包</a>
           </li>
         
       </ul>
