@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mysql存储emoji | ming blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="mysql使用utf8编码时不能存储emoji,因为emoji是占4个字节的，而普通字符是3个字节。myslq从5.5.3版本之后引入了一种新的编码方式utf8mb4，支持emoji包括火星文。下边的例子是基于flask的一个新建的项目中使用utf8mb4编码。
+新建数据库设定字符集123456$ mkdir emoji$ touch run.py$ cd emoji$ touch __init_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql存储emoji">
+<meta property="og:url" content="http://zhangming0509.github.io/2016/02/24/mysql-emoji/index.html">
+<meta property="og:site_name" content="ming blog">
+<meta property="og:description" content="mysql使用utf8编码时不能存储emoji,因为emoji是占4个字节的，而普通字符是3个字节。myslq从5.5.3版本之后引入了一种新的编码方式utf8mb4，支持emoji包括火星文。下边的例子是基于flask的一个新建的项目中使用utf8mb4编码。
+新建数据库设定字符集123456$ mkdir emoji$ touch run.py$ cd emoji$ touch __init_">
+<meta property="og:image" content="http://7xkbsf.com1.z0.glb.clouddn.com/16-2-24/9653694.jpg?imageView/2/w/320/q/90">
+<meta property="og:updated_time" content="2016-02-24T05:12:24.247Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql存储emoji">
+<meta name="twitter:description" content="mysql使用utf8编码时不能存储emoji,因为emoji是占4个字节的，而普通字符是3个字节。myslq从5.5.3版本之后引入了一种新的编码方式utf8mb4，支持emoji包括火星文。下边的例子是基于flask的一个新建的项目中使用utf8mb4编码。
+新建数据库设定字符集123456$ mkdir emoji$ touch run.py$ cd emoji$ touch __init_">
+  
+    <link rel="alternative" href="/atom.xml" title="ming blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ming blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zhangming0509.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mysql-emoji" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/24/mysql-emoji/" class="article-date">
+  <time datetime="2016-02-24T03:59:20.000Z" itemprop="datePublished">2016-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mysql存储emoji
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mysql使用utf8编码时不能存储emoji,因为emoji是占4个字节的，而普通字符是3个字节。myslq从5.5.3版本之后引入了一种新的编码方式<code>utf8mb4</code>，支持emoji包括火星文。下边的例子是基于<code>flask</code>的一个新建的项目中使用<code>utf8mb4</code>编码。</p>
+<h2 id="新建数据库设定字符集">新建数据库设定字符集</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir emoji</span><br><span class="line">$ touch run.py</span><br><span class="line">$ <span class="built_in">cd</span> emoji</span><br><span class="line">$ touch __init__.py</span><br><span class="line">$ mkdir templates</span><br><span class="line">$ touch templates/test.html</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>emoji/<strong>init</strong>.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, render_template, flash, redirect, url_for</span><br><span class="line"><span class="keyword">from</span> flask.ext.sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"><span class="keyword">from</span> flask.ext.wtf <span class="keyword">import</span> Form</span><br><span class="line"><span class="keyword">from</span> wtforms <span class="keyword">import</span> StringField, SubmitField</span><br><span class="line"><span class="keyword">from</span> wtforms.validators <span class="keyword">import</span> Required</span><br><span class="line"><span class="keyword">from</span> flask.ext.bootstrap <span class="keyword">import</span> Bootstrap</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the Flask application</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the Flask-SQLAlchemy object</span></span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create Bootstrap object</span></span><br><span class="line">bootstrap = Bootstrap(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Config database uri</span></span><br><span class="line">app.config[<span class="string">'SQLALCHEMY_DATABASE_URI'</span>] = \</span><br><span class="line">    <span class="string">'mysql+pymysql://root:abc123..@localhost/emoji?charset=utf8mb4'</span></span><br><span class="line"><span class="comment"># config secret key</span></span><br><span class="line">app.config[<span class="string">'SECRET_KEY'</span>] = <span class="string">'kd8273f784jkkdjkj(jdj3'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Info</span><span class="params">(db.Model)</span>:</span></span><br><span class="line">    id = db.Column(db.Integer(), primary_key=<span class="keyword">True</span>)</span><br><span class="line">    content = db.Column(db.Unicode(<span class="number">40</span>), nullable=<span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InfoForm</span><span class="params">(Form)</span>:</span></span><br><span class="line">    content = StringField(<span class="string">'content'</span>, validators=[Required()])</span><br><span class="line">    submit = SubmitField(<span class="string">'submit'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="decorator">@app.route('/', methods=['GET', 'POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    form = InfoForm()</span><br><span class="line">    <span class="keyword">if</span> form.validate_on_submit():</span><br><span class="line">        info = Info(content=form.content.data)</span><br><span class="line">        db.session.add(info)</span><br><span class="line">        db.session.commit()</span><br><span class="line">        flash(<span class="string">u'添加成功'</span>)</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">'index'</span>))</span><br><span class="line">    infos = [&#123;<span class="string">"content"</span>: info.content&#125; <span class="keyword">for</span> info <span class="keyword">in</span> Info.query.order_by(Info.id.desc())]</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'test.html'</span>, form=form, infos=infos)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p>说明</p>
+<ul>
+<li><code>bootstrap = Bootstrap(app)</code>不能忘记，否则会找不到<code>bootstrap/base.html</code>模板</li>
+<li>数据库uri要加上相应的字符集参数<code>utf8mb4</code></li>
+</ul>
+<p>emoji/templates/test.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends "bootstrap/base.html"  %&#125;</span><br><span class="line">&#123;% import "bootstrap/wtf.html" as wtf %&#125;</span><br><span class="line">&#123;% block title %&#125;test emoji&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"page-header"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Add info<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-md-12"</span>&gt;</span></span><br><span class="line">        &#123;&#123; wtf.quick_form(form) &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">            &#123;% for info in infos %&#125;</span><br><span class="line">                <span class="tag">&lt;<span class="title">li</span>&gt;</span>&#123;&#123; info.content &#125;&#125;<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+<p>run.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> emoji <span class="keyword">import</span> app</span><br><span class="line"><span class="keyword">from</span> werkzeug.contrib.fixers <span class="keyword">import</span> ProxyFix</span><br><span class="line"></span><br><span class="line">app.wsgi_app = ProxyFix(app.wsgi_app)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p>创建数据库<code>emoji</code>, 使用<code>utf0mb4</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ mysql -u root -p</span><br><span class="line">Enter password:</span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is <span class="number">149</span></span><br><span class="line">Server version: <span class="number">5.5</span>.<span class="number">47</span>-<span class="number">0</span>ubuntu0.<span class="number">14.04</span>.<span class="number">1</span> (Ubuntu)</span><br><span class="line"></span><br><span class="line">Copyright (c) <span class="number">2000</span>, <span class="number">2015</span>, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> help. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt; create database emoji default charset utf8mb4;</span><br><span class="line">Query OK, <span class="number">1</span> row affected (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+<p>通过<code>db.create_all</code>创建表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ python       </span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">6</span> (default, Jun <span class="number">22</span> <span class="number">2015</span>, <span class="number">17</span>:<span class="number">58</span>:<span class="number">13</span>)</span><br><span class="line">[GCC <span class="number">4.8</span>.<span class="number">2</span>] on linux2</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; from emoji import db</span><br><span class="line">/home/ming/.virtualenvs/kingmv/<span class="built_in">local</span>/lib/python2.<span class="number">7</span>/site-packages/flask_sqlalchemy/__init__.py:<span class="number">800</span>: UserWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default <span class="keyword">in</span> the future.  Set it to True to suppress this warning.</span><br><span class="line">  warnings.warn(<span class="string">'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.'</span>)</span><br><span class="line">&gt;&gt;&gt; db.create_all()</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>查看生成了表<code>info</code>，其编码格式为<code>utf8mb4</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show tables;</span><br><span class="line">+-----------------+</span><br><span class="line">| Tables_<span class="keyword">in</span>_emoji |</span><br><span class="line">+-----------------+</span><br><span class="line">| info            |</span><br><span class="line">+-----------------+</span><br><span class="line"><span class="number">1</span> row <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show create table info;</span><br><span class="line">+-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| Table | Create Table                                                                                                                                                                  |</span><br><span class="line">+-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| info  | CREATE TABLE `info` (</span><br><span class="line">  `id` int(<span class="number">11</span>) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `content` varchar(<span class="number">40</span>) NOT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=<span class="number">6</span> DEFAULT CHARSET=utf8mb4 |</span><br><span class="line">+-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line"><span class="number">1</span> row <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+<p>启动应用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python run.py</span><br><span class="line"> * Running on http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">5000</span>/ (Press CTRL+C to quit)</span><br><span class="line"> * Restarting with <span class="built_in">stat</span></span><br></pre></td></tr></table></figure>
+<p>打开手机浏览器,因为ubuntu系统无法输入imoji，输入’<a href="http://127.0.0.1:5000/" target="_blank" rel="external">http://127.0.0.1:5000/</a>‘, 测试“苹果”，“草莓”等可以显示，如下所示<br><img src="http://7xkbsf.com1.z0.glb.clouddn.com/16-2-24/9653694.jpg?imageView/2/w/320/q/90" alt=""></p>
+<h2 id="修改存在数据库的字符集">修改存在数据库的字符集</h2><p>另一种情况是数据库已经存在，即一个运行中的项目需要修改字符集设置</p>
+<p>首先查看字符集设置如下，<code>character_set_system</code>为<code>utf8</code>，需要将其修改为<code>utf8mb4</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE <span class="string">'character\_set\_%'</span> OR Variable_name LIKE <span class="string">'collation%'</span>;</span><br><span class="line">+--------------------------+-------------------+</span><br><span class="line">| Variable_name            | Value             |</span><br><span class="line">+--------------------------+-------------------+</span><br><span class="line">| character_<span class="built_in">set</span>_client     | latin1            |</span><br><span class="line">| character_<span class="built_in">set</span>_connection | latin1            |</span><br><span class="line">| character_<span class="built_in">set</span>_database   | latin1            |</span><br><span class="line">| character_<span class="built_in">set</span>_filesystem | binary            |</span><br><span class="line">| character_<span class="built_in">set</span>_results    | latin1            |</span><br><span class="line">| character_<span class="built_in">set</span>_server     | latin1            |</span><br><span class="line">| character_<span class="built_in">set</span>_system     | utf8              |</span><br><span class="line">| collation_connection     | latin1_swedish_ci |</span><br><span class="line">| collation_database       | latin1_swedish_ci |</span><br><span class="line">| collation_server         | latin1_swedish_ci |</span><br><span class="line">+--------------------------+-------------------+</span><br></pre></td></tr></table></figure>
+<p>按照<a href="blog.manbolo.com/2014/03/31/using-emojis-in-django-model-fields">Using Emojis in Django Model Fields</a>的指引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># For each database:</span><br><span class="line"><span class="operator"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> database_name <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span></span><br><span class="line"># For each table:</span><br><span class="line"><span class="operator"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span></span><br><span class="line"># For each column:</span><br><span class="line"><span class="operator"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">CHANGE</span> column_name column_name <span class="built_in">VARCHAR</span>(<span class="number">191</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci <span class="keyword">NOT</span> <span class="literal">NULL</span>;</span></span><br><span class="line"># (Don’t blindly copy-paste this! The exact statement depends on the column     type, maximum length, and other properties. The above line is just an example for a `VARCHAR` column.)</span><br></pre></td></tr></table></figure>
+<p>需要修改数据库，表和相应的列的字符集格式，实际测试只需修改数据库和表的字符集格式即可。同时相应的也要修改数据库uri的字符集参数。</p>
+<p>最后要修改数据库配置文件<code>/etc/mysql/my.cnf</code>为如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-<span class="operator"><span class="keyword">set</span> = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line"><span class="keyword">default</span>-<span class="built_in">character</span>-<span class="keyword">set</span> = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line"><span class="built_in">character</span>-<span class="keyword">set</span>-<span class="keyword">client</span>-handshake = <span class="literal">FALSE</span></span><br><span class="line"><span class="built_in">character</span>-<span class="keyword">set</span>-<span class="keyword">server</span> = utf8mb4</span><br><span class="line"><span class="keyword">collation</span>-<span class="keyword">server</span> = utf8mb4_unicode_ci</span></span><br></pre></td></tr></table></figure>
+<p>重启mysql服务即可。</p>
+<p>参考链接</p>
+<ul>
+<li><a href="http://www.aichengxu.com/view/42443" target="_blank" rel="external">django，mysql存储emoji表情，utf8mb4</a></li>
+<li><a href="blog.manbolo.com/2014/03/31/using-emojis-in-django-model-fields">Using Emojis in Django Model Fields</a></li>
+<li><a href="https://mathiasbynens.be/notes/mysql-utf8mb4" target="_blank" rel="external">How to support full Unicode in MySQL databases</a></li>
+<li><a href="http://m.douban.com/group/topic/73189860/" target="_blank" rel="external">TemplateNotFound: bootstrap/wtf.html</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhangming0509.github.io/2016/02/24/mysql-emoji/" data-id="cil0choqe000rwsk6ay38jqfj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flask/">Flask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01/29/python-private-attribute-inherient/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python私有同名属性的继承</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PIL/">PIL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fiddler/">fiddler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mono/">mono</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlalchemy/">sqlalchemy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/PIL/" style="font-size: 15px;">PIL</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/crontab/" style="font-size: 10px;">crontab</a> <a href="/tags/fiddler/" style="font-size: 10px;">fiddler</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/mono/" style="font-size: 10px;">mono</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sqlalchemy/" style="font-size: 10px;">sqlalchemy</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/02/24/mysql-emoji/">mysql存储emoji</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/29/python-private-attribute-inherient/">python私有同名属性的继承</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/21/pil-accent-color/">使用PIL获取图片主色调</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/19/pil-thumbnail/">使用PIL生成缩略图</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/11/rank-query/">SQL和sqlalchemy实现根据点赞和评论数量排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Nemo Zhang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

@@ -61,6 +61,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mysql-emoji" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/24/mysql-emoji/" class="article-date">
+  <time datetime="2016-02-24T03:59:20.000Z" itemprop="datePublished">2016-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/24/mysql-emoji/">mysql存储emoji</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mysql使用utf8编码时不能存储emoji,因为emoji是占4个字节的，而普通字符是3个字节。myslq从5.5.3版本之后引入了一种新的编码方式<code>utf8mb4</code>，支持emoji包括火星文。下边的例子是基于<code>flask</code>的一个新建的项目中使用<code>utf8mb4</code>编码。</p>
+<h2 id="新建数据库设定字符集">新建数据库设定字符集</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir emoji</span><br><span class="line">$ touch run.py</span><br><span class="line">$ <span class="built_in">cd</span> emoji</span><br><span class="line">$ touch __init__.py</span><br><span class="line">$ mkdir templates</span><br><span class="line">$ touch templates/test.html</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2016/02/24/mysql-emoji/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhangming0509.github.io/2016/02/24/mysql-emoji/" data-id="cil0choqe000rwsk6ay38jqfj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flask/">Flask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python-private-attribute-inherient" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/29/python-private-attribute-inherient/" class="article-date">
@@ -97,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2016/01/29/python-private-attribute-inherient/" data-id="cijzeyvx3000ic5k6tti6f15e" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2016/01/29/python-private-attribute-inherient/" data-id="cil0choq0000iwsk6mieoi8rn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -140,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2016/01/21/pil-accent-color/" data-id="cijzeyvx8000nc5k6y45929ut" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2016/01/21/pil-accent-color/" data-id="cil0choq6000owsk62b7mjexy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/">PIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -184,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2016/01/19/pil-thumbnail/" data-id="cijzeyvx5000jc5k6i1jkknsl" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2016/01/19/pil-thumbnail/" data-id="cil0choq4000kwsk60uhvg8e0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/">PIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -227,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2016/01/11/rank-query/" data-id="cijzeyvx1000dc5k6s9jiwt4z" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2016/01/11/rank-query/" data-id="cil0chopy000dwsk6iye3m5vv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlalchemy/">sqlalchemy</a></li></ul>
@@ -271,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/12/31/check-pigbs-book-md/" data-id="cijzeyvw80000c5k61ec9dkfz" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2015/12/31/check-pigbs-book-md/" data-id="cil0chop50000wsk6v9pr8zec" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/crontab/">crontab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -317,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/12/29/ubuntu-mono-fiddler/" data-id="cijzeyvwu0005c5k6hjavmivl" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2015/12/29/ubuntu-mono-fiddler/" data-id="cil0chopr0005wsk6874twqy5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fiddler/">fiddler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mono/">mono</a></li></ul>
@@ -376,7 +420,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/12/02/sublime-shortcuts/" data-id="cijzeyvwy000ac5k6drxygspb" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2015/12/02/sublime-shortcuts/" data-id="cil0chopv000awsk6wc00ojy9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sublime/">sublime</a></li></ul>
@@ -428,7 +472,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhangming0509.github.io/2015/07/12/hexo-deploy-tip/" data-id="cijzeyvxb000qc5k6ag0f49h7" class="article-share-link">Share</a>
+      <a data-url="http://zhangming0509.github.io/2015/07/12/hexo-deploy-tip/" data-id="cil0choqk000ywsk6pfyyvhyo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -451,7 +495,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PIL/">PIL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fiddler/">fiddler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mono/">mono</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlalchemy/">sqlalchemy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PIL/">PIL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fiddler/">fiddler</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mono/">mono</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlalchemy/">sqlalchemy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -460,7 +504,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/PIL/" style="font-size: 15px;">PIL</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/crontab/" style="font-size: 10px;">crontab</a> <a href="/tags/fiddler/" style="font-size: 10px;">fiddler</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/mono/" style="font-size: 10px;">mono</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sqlalchemy/" style="font-size: 10px;">sqlalchemy</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a>
+      <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/PIL/" style="font-size: 15px;">PIL</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/crontab/" style="font-size: 10px;">crontab</a> <a href="/tags/fiddler/" style="font-size: 10px;">fiddler</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/mono/" style="font-size: 10px;">mono</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sqlalchemy/" style="font-size: 10px;">sqlalchemy</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a>
     </div>
   </div>
 
@@ -469,7 +513,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -479,6 +523,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/02/24/mysql-emoji/">mysql存储emoji</a>
+          </li>
         
           <li>
             <a href="/2016/01/29/python-private-attribute-inherient/">python私有同名属性的继承</a>
@@ -494,10 +542,6 @@
         
           <li>
             <a href="/2016/01/11/rank-query/">SQL和sqlalchemy实现根据点赞和评论数量排序</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/31/check-pigbs-book-md/">python监控小猪巴士票预售</a>
           </li>
         
       </ul>
