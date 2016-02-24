@@ -120,7 +120,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-创建数据库`emoji`, 使用`utf0mb4`
+创建数据库`emoji`, 使用`utf8mb4`
 
 ```bash
 ➜  ~ mysql -u root -p
