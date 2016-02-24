@@ -2,7 +2,7 @@ title: mysql存储emoji
 date: 2016-02-24 11:59:20
 tags:
   - mysql
-  - Python
+  - python
   - Flask
 ---
 
@@ -192,7 +192,7 @@ $ python run.py
 打开手机浏览器,因为ubuntu系统无法输入imoji，输入'http://127.0.0.1:5000/', 测试“苹果”，“草莓”等可以显示，如下所示
 ![](http://7xkbsf.com1.z0.glb.clouddn.com/16-2-24/9653694.jpg?imageView/2/w/320/q/90)
 
-修改存在数据库的字符集
+修改已存在数据库的字符集
 ------------------
 
 另一种情况是数据库已经存在，即一个运行中的项目需要修改字符集设置
